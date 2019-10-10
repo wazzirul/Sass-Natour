@@ -1,0 +1,58 @@
+@mixin clearfix{
+    &::after{
+        content:"";
+        display:table;
+        clear: both;
+    }
+}
+
+@mixin absCenter{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+
+//MEDIA QUERIY MANAGER 
+
+
+/*
+0 - 600ox       : phone size
+600-900px       : tablet portrait
+900-1200        : tablet landscape
+1200 - 1800px   : dektop size ( DEFAULT / NORMAL SIZE APPLIESSSSSS)
+1800px          : big dekstop
+
+
+$breakpoint argument choices :
+~ phone
+~ tabport
+~ tabland
+~ bigdekstop
+
+ORDER : Base + typography > general layout + grid > page layout > components
+
+*/
+@mixin respond($breakpoint){
+    @if $breakpoint == phone{
+        @media only screen and (max-width:37.5em) { //600px
+            @content
+        }
+    }
+    @if $breakpoint == tabport{
+        @media only screen and (max-width:56.25em) { //900px
+            @content
+        }
+    }
+    @if $breakpoint == tabland{
+        @media only screen and (max-width:75em) { //1200px
+            @content
+        }
+    }
+    @if $breakpoint == bigdekstop{
+        @media only screen and (min-width:112.5em) { //1800px
+            @content
+        }
+    }
+}

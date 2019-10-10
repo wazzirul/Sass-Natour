@@ -1,0 +1,22 @@
+//to center the text
+.u-center-text{text-align: center !important; }
+
+//to margin bottom && top
+.u-marginbot-big{margin-bottom: 8rem !important;
+    @include respond(tabport){
+        margin-bottom: 5rem !important;
+    }
+}
+
+.u-marginbot-small{margin-bottom: 1.5rem !important;}
+
+.u-marginbot-medium{margin-bottom: 4rem !important;
+    @include respond(tabport){
+        margin-bottom: 3rem !important;
+    }
+}
+
+.u-margintop-small{margin-top: 1.5rem !important;}
+.u-margintop-big{margin-top: 8rem !important;}
+.u-margintop-huge{margin-top: 10rem !important;}
+

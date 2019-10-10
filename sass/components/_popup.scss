@@ -1,0 +1,129 @@
+.popup{
+    height:100vh;
+    width:100%;
+    position: fixed;
+    top:0;
+    left:0;
+    background-color: rgba($cblack, .8);
+    z-index:2500;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    @supports(backdrop-filter: blur(10px)){
+        background-color: rgba($cblack, .3);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    &__content{
+        @include absCenter;
+        width:75%;
+        background-color: $cwhite;
+        border-radius:3px;
+        display: table;
+        overflow: hidden;
+        box-shadow:0 2rem 4rem rgba($cblack, .2);
+        opacity:0;
+        transform: translate(-50%,-50%) scale(.25);
+        -webkit-transform: translate(-50%,-50%) scale(.25);
+        transition: all .5s .2s;
+    }
+
+    &__left{
+        width:33.333333%;
+        display:table-cell;
+    }
+    &__right{
+        width:66.6666667%;
+        display:table-cell;
+        vertical-align: middle;
+        padding:3rem 5rem;
+    }
+    &__img{
+        display:block;
+        width:100%;
+    }
+    &__text{
+        font-size:1.4rem;
+        margin-bottom:1.8rem;
+
+
+        //membuat text menjadi 2column
+        column-count: 2;
+        column-gap:4rem;
+        column-rule: 1px solid $cgreylight2; 
+
+        -moz-column-count: 2;
+        -moz-column-gap:4rem;
+        -moz-column-rule: 1px solid $cgreylight2; 
+
+
+        //hypens
+        hyphens: auto;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+    }
+
+    &:target{
+        opacity:1;
+        visibility: visible;
+    }
+    &:target &__content{
+        opacity:1;
+        transform: translate(-50%,-50%) scale(1);
+        -webkit-transform: translate(-50%,-50%) scale(1);
+    }
+
+    @include respond(tabland){
+        text-align: center;
+        &__left{
+            width:100%;
+            display:table-row;
+        }
+        &__right{
+            width:100%;
+            display:table-row;
+            vertical-align: middle;
+            padding:3rem 5rem;
+        }
+        &__img{
+            display:inline-block;
+            height: 25rem;
+        }
+        &__content &__img{
+            width: 50%;
+        }
+        &__text{
+            text-align: left;
+            font-size:1rem;
+            margin-bottom:1.3rem;
+            column-count: 1;
+            padding: 0 2rem;
+        }
+    }
+
+    &__close{
+        &:link,
+        &:visited{
+            position: absolute;
+            color:$cgrey;      
+            top:2.2rem;
+            right:2.2rem;
+            font-size: 3rem; 
+            text-decoration: none;
+            display:inline-block;
+            transition: all .2s;
+            
+            //line height digunakan agar tinggi element tidak melebihi teks yg ditampilkan / X
+            line-height: 1;
+            @include respond(tabport){
+                top: 1.9rem;
+                right: 1.9rem;
+            }
+        }
+        &:hover{
+            color:$cmedgreen;
+        }
+    }
+}
